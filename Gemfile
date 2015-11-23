@@ -6,6 +6,8 @@ gem 'sass-rails', '~> 5.0'
 
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
+gem 'bcrypt', '~> 3.1.7'
+
 
 group :development, :test do
   gem 'pry-rails'
