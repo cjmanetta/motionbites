@@ -4,6 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.string :email
+      t.boolean :admin
       t.integer :age
       t.boolean :basic_start
       t.integer :days_of_7_vig
