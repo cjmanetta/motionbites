@@ -11,15 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151123154958) do
+ActiveRecord::Schema.define(version: 20151123201837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "exercises", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "exertion"
+    t.integer  "technicality"
+    t.string   "equipment"
+    t.integer  "flexibility"
+    t.integer  "balance"
+    t.integer  "strength"
+    t.boolean  "breathing"
+    t.string   "muscle_1"
+    t.string   "muscle_2"
+    t.string   "muscle_3"
+    t.string   "muscle_stretched"
+    t.string   "origin"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
+    t.boolean  "admin",                default: false
+    t.string   "password_digest"
     t.integer  "age"
     t.boolean  "basic_start"
     t.integer  "days_of_7_vig"
@@ -29,8 +50,8 @@ ActiveRecord::Schema.define(version: 20151123154958) do
     t.integer  "days_of_7_walk"
     t.integer  "mins_walk_per_day"
     t.integer  "mins_weekday_sitting"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
 end
