@@ -1,21 +1,3 @@
-User.create(
-  first_name: "Peter",
-  last_name: "Manetta",
-  email: "pmanetta@gmail.com",
-  admin: true,
-  password: "1234",
-  age: 35,
-  basic_start: false)
-
-User.create(
-  first_name: "Charlotte",
-  last_name: "Manetta",
-  email: "cjmanetta@gmail.com",
-  admin: true,
-  password: "1234",
-  age: 31,
-  basic_start: false)
-
 18.times do
   User.create(
     first_name: Faker::Name.first_name,
@@ -172,6 +154,22 @@ User.find(18).days_of_7_walk = 0
 User.find(18).mins_walk_per_day = 0
 User.find(18).mins_weekday_sitting = 0
 
+User.create(
+  first_name: "Peter",
+  last_name: "Manetta",
+  email: "pmanetta@gmail.com",
+  admin: true,
+  password: "1234",
+  age: 35,
+  basic_start: false)
 
+User.create(
+  first_name: "Charlotte",
+  last_name: "Manetta",
+  email: "cjmanetta@gmail.com",
+  admin: true,
+  password: "1234",
+  age: 31,
+  basic_start: false)
 
 
