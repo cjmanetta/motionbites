@@ -1,3 +1,5 @@
+require 'CSV'
+
 18.times do
   User.create(
     first_name: Faker::Name.first_name,
@@ -173,3 +175,22 @@ User.create(
   basic_start: false)
 
 
+CSV.foreach("db/exercises.csv", {headers: true, header_converters: :symbol}) do |row|
+  Exercise.create({
+    name: row[:name],
+    legacy_id: row[:legacy_id],
+    legacy_prereqs: row[:legacy_prereqs],
+    description: row[:description],
+    exertion: row[:exertion],
+    technicality: row[:technicality],
+    equipment: nil,
+    flexibility: row[:flexibility],
+    balance: row[:balance],
+    strength: row[:strength],
+    breathing: row[:breathing],
+    muscle_1: row[:muscle_1],
+    muscle_2: row[:muscle_2],
+    muscle_3: row[:muscle_3],
+    muscle_stretched: row[:muscle_stretched],
+    origin: row[:origin]})
+end
