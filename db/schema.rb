@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151123201837) do
+ActiveRecord::Schema.define(version: 20151125022912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "exercises", force: :cascade do |t|
     t.string   "name"
+    t.string   "legacy_id"
+    t.string   "legacy_prereqs"
     t.text     "description"
     t.integer  "exertion"
     t.integer  "technicality"
@@ -34,6 +36,16 @@ ActiveRecord::Schema.define(version: 20151123201837) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
+
+  create_table "prerequisites", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "prereq_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "prerequisites", ["prereq_id"], name: "index_prerequisites_on_prereq_id", using: :btree
+  add_index "prerequisites", ["user_id"], name: "index_prerequisites_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -53,5 +65,16 @@ ActiveRecord::Schema.define(version: 20151123201837) do
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
   end
+
+  create_table "views", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "exercise_id"
+    t.datetime "datetime_viewed"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "views", ["exercise_id"], name: "index_views_on_exercise_id", using: :btree
+  add_index "views", ["user_id"], name: "index_views_on_user_id", using: :btree
 
 end
