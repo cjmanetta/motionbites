@@ -8,6 +8,10 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'therubyracer'
+gem 'less-rails-semantic_ui', '~> 2.0.7.0'
+gem 'autoprefixer-rails', '~> 5.2.1.2'
+
 
 group :development, :test do
   gem 'pry-rails'
