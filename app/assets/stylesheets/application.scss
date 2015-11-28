@@ -10,6 +10,34 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require semantic_ui/semantic_ui
  *= require_tree .
  *= require_self
  */
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600|Roboto+Slab:300);
+
+
+$main-font: 'Open Sans', sans-serif;
+$heading-font: 'Roboto Slab', serif;
+$blue-color: #DBE8E2;
+$coral-color: #ed815a;
+$third-color: #FF6D67;
+$shadow: #BABABA;
+$dark-color: #171424;
+$panel: #BEC9C4;
+$button-color: #f4d583;
+
+body {
+  font: 75% $main-font;
+  color: black;
+}
+
+h1, h3, h4, h5, h6 {
+  font: 200% $heading-font;
+}
+
+h2 {
+  font: 220% $heading-font;
+  padding-bottom: 10px;
+}
