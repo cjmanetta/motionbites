@@ -150,3 +150,85 @@ user2.fitness_score # =>
 
 user3 = User.new({days_of_7_vig: 0, mins_vig_per_day: 0, days_of_7_mod: 3, mins_mod_per_day: 40, days_of_7_walk: 3, mins_walk_per_day: 40, mins_weekday_sitting: 800, org_pa: false, viewership_level: 1})
 user3.fitness_score # =>
+
+
+# old adjust start_score method
+
+# def adjust_start_score
+#     if @fitness_score == 1
+#       case @exertion
+#       when 1
+#         p @starting_score += 30
+#         p @starting_score
+#       when 2
+#         @starting_score += 10
+#       when 3
+#         @starting_score
+#       when 4
+#         @starting_score -= 10
+#       when 5
+#         @starting_score -= 20
+#       else
+#         @starting_score
+#       end
+#     elsif @fitness_score == 2
+#       p @fitness_score
+#     elsif @fitness_score == 3
+#       p @fitness_score
+#     elsif @fitness_score == 4
+#       p @fitness_score
+#     elsif @fitness_score == 5
+#       p @fitness_score
+#     elsif @fitness_score == 6
+#       p @fitness_score
+#     elsif @fitness_score == 7
+#       p @fitness_score
+#     end
+
+
+
+
+    # ##case exertion_adj_fs1
+    # when fitness_score = 1 && @exertion = 1
+    #   @starting_score + 30
+    # when fitness_score = 1 && @exertion = 2
+    #   @starting_score + 10
+    # when fitness_score = 1 && @exertion = 3
+    #   @starting_score
+    # when fitness_score = 1 && @exertion = 4
+    #   @starting_score - 10
+    # when fitness_score = 1 && @exertion = 5
+    #   @starting_score - 20
+    # else
+    #   @starting_score
+    # end
+
+    # case exertion_adj_fs2
+    # when fitness_score = 2 && @exertion = 1
+    #   @starting_score + 20
+    # when fitness_score = 2 && @exertion = 2
+    #   @starting_score + 15
+    # when fitness_score = 2 && @exertion = 3
+    #   @starting_score + 5
+    # when fitness_score = 2 && @exertion = 4
+    #   @starting_score - 10
+    # when fitness_score = 2 && @exertion = 5
+    #   @starting_score - 20
+    # else
+    #   @starting_score
+    # end
+
+    # case exertion_adj_fs3
+    # when fitness_score = 3 && @exertion = 1
+    #   @starting_score + 20
+    # when fitness_score = 3 && @exertion = 2
+    #   @starting_score + 10
+    # when fitness_score = 3 && @exertion = 3
+    #   @starting_score + 5
+    # when fitness_score = 3 && @exertion = 4
+    #   @starting_score - 5
+    # when fitness_score = 3 && @exertion = 5
+    #   @starting_score - 20
+    # else
+    #   @starting_score
+    # end
