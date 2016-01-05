@@ -19,8 +19,9 @@ peter = User.new({days_of_7_vig: 5,
                   org_pa: true,
                   viewership_level: 1})
 
-interaction = ExerciseScore.new(peter, neck_roll)
 
+
+interaction = ExerciseScore.new(peter, neck_roll)
 p interaction.calculate_score
 
 
