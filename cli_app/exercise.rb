@@ -9,3 +9,4 @@ class Exercise
     @technicality = args[:technicality]
   end
 end
+
