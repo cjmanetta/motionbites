@@ -9,11 +9,11 @@ neck_roll = Exercise.new({exertion: 1,
                           strength: 1,
                           technicality: 1})
 
-peter = User.new({days_of_7_vig: 5,
+peter = User.new({days_of_7_vig: 3,
                   mins_vig_per_day: 20,
                   days_of_7_mod: 2,
                   mins_mod_per_day: 30,
-                  days_of_7_walk: 2,
+                  days_of_7_walk: 1,
                   mins_walk_per_day: 20,
                   mins_weekday_sitting: 550,
                   org_pa: true,
@@ -23,6 +23,7 @@ peter = User.new({days_of_7_vig: 5,
 
 interaction = ExerciseScore.new(peter, neck_roll)
 p interaction.calculate_score
+p peter.fitness_score
 
 
 # other exercises

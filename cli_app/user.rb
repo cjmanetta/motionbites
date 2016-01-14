@@ -29,7 +29,7 @@ class User
 
     mins_vig_per_week = (@days_of_7_vig*@mins_vig_per_day)*1.75
     mins_mod_per_week = (@days_of_7_mod*@mins_mod_per_day)*1.5
-    mins_walk_per_week = (@days_of_7_walk*@mins_walk_per_day)
+    mins_walk_per_week = (@days_of_7_walk*@mins_walk_per_day)*1.25
     sit_penalty = @mins_weekday_sitting*0.075
 
     (mins_vig_per_week + mins_mod_per_week + mins_walk_per_week - sit_penalty)*vlevel_mult
