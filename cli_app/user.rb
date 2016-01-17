@@ -15,24 +15,25 @@ class User
   end
 
   def adjust_minutes
-    if @viewership_level == 1
+    case @viewership_level
+    when 1
       vlevel_mult = 1.1
-    elsif @viewership_level == 2
+    when 2
       vlevel_mult = 1.2
-    elsif @viewership_level == 3
+    when 3
       vlevel_mult = 1.3
-    elsif @viewership_level == 4
+    when 4
       vlevel_mult = 1.4
-    elsif @viewership_level == 5
+    when 5
       vlevel_mult = 1.5
     end
 
-    mins_vig_per_week = (@days_of_7_vig*@mins_vig_per_day)*1.75
-    mins_mod_per_week = (@days_of_7_mod*@mins_mod_per_day)*1.5
-    mins_walk_per_week = (@days_of_7_walk*@mins_walk_per_day)*1.25
-    sit_penalty = @mins_weekday_sitting*0.075
+    mins_vig_per_week = (@days_of_7_vig * @mins_vig_per_day) * 1.75
+    mins_mod_per_week = (@days_of_7_mod * @mins_mod_per_day) * 1.5
+    mins_walk_per_week = (@days_of_7_walk * @mins_walk_per_day) * 1.25
+    sit_penalty = @mins_weekday_sitting * 0.075
 
-    (mins_vig_per_week + mins_mod_per_week + mins_walk_per_week - sit_penalty)*vlevel_mult
+    (mins_vig_per_week + mins_mod_per_week + mins_walk_per_week - sit_penalty) * vlevel_mult
   end
 
   def calculate_fitness_score
