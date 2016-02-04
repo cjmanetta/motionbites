@@ -22,7 +22,8 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'faker'
   gem 'web-console', '~> 2.0'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
+  gem 'selenium-webdriver'
 end
 
 group :test do
