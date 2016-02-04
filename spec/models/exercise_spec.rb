@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Exercise, :focus do
+describe Exercise do
   let(:exercise) {FactoryGirl.build(:exercise)}
 
   it "is valid with a name and exertion, technicality, flexibility, balance and strength scores" do
