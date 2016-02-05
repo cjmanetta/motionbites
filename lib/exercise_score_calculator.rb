@@ -1,5 +1,3 @@
-require_relative 'adjustment_table'
-
 module ExerciseScoreCalculator
   def self.calculate_score(user, exercise)
     score = 100
@@ -13,4 +11,3 @@ module ExerciseScoreCalculator
   end
 end
 
-# try to figure outhow to get the attribute name from the active record model
