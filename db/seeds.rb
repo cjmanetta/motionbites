@@ -6,7 +6,7 @@ require 'CSV'
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
     password: "1234",
-    age: (30..65).to_a.sample,
+    birthdate: "1984-11-24",
     basic_start: false)
 end
 
@@ -162,7 +162,7 @@ User.create(
   email: "pmanetta@gmail.com",
   admin: true,
   password: "1234",
-  age: 35,
+  birthdate: "1984-11-24",
   basic_start: false)
 
 User.create(
@@ -171,7 +171,7 @@ User.create(
   email: "cjmanetta@gmail.com",
   admin: true,
   password: "1234",
-  age: 31,
+  birthdate: "1984-11-24",
   basic_start: false)
 
 

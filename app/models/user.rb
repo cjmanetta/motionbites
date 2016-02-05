@@ -63,9 +63,10 @@ class User < ActiveRecord::Base
     end
 
     if self.org_pa && fitness_score != 7
-      self.fitness_score = fitness_score + 1
+      self.update_attribute(:fitness_score, (fitness_score + 1))
+      # self.fitness_score = fitness_score + 1
     else
-      self.fitness_score = fitness_score
+      self.update_attribute(:fitness_score, fitness_score)
     end
   end
 end
