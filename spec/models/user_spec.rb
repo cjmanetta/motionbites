@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe User, :focus do
+describe User do
   let(:user) { build(:user) }
 
   context "is valid" do
