@@ -37,15 +37,15 @@ ActiveRecord::Schema.define(version: 20151125022912) do
     t.datetime "updated_at",       null: false
   end
 
-  create_table "prerequisites", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "prereq_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "prerequisiteships", force: :cascade do |t|
+    t.integer  "exercise_id"
+    t.integer  "prerequisite_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
-  add_index "prerequisites", ["prereq_id"], name: "index_prerequisites_on_prereq_id", using: :btree
-  add_index "prerequisites", ["user_id"], name: "index_prerequisites_on_user_id", using: :btree
+  add_index "prerequisiteships", ["exercise_id"], name: "index_prerequisiteships_on_exercise_id", using: :btree
+  add_index "prerequisiteships", ["prerequisite_id"], name: "index_prerequisiteships_on_prerequisite_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"

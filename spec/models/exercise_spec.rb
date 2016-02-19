@@ -1,22 +1,25 @@
 require 'rails_helper'
 
-describe Exercise do
+describe Exercise, :focus do
   let(:exercise) {FactoryGirl.build(:exercise)}
 
-  it "is valid with a name and exertion, technicality, flexibility, balance and strength scores" do
-    expect(exercise).to be_valid
+  context "is valid" do
+    it { expect(exercise).to validate_presence_of(:name) }
+    it { expect(exercise).to validate_presence_of(:exertion) }
+    it { expect(exercise).to validate_presence_of(:technicality) }
+    it { expect(exercise).to validate_presence_of(:balance) }
+    it { expect(exercise).to validate_presence_of(:strength) }
+
+    it { expect(exercise).to validate_inclusion_of(:exertion).in_range 1..5 }
+    it { expect(exercise).to validate_inclusion_of(:technicality).in_range 1..5 }
+    it { expect(exercise).to validate_inclusion_of(:balance).in_range 1..5 }
+    it { expect(exercise).to validate_inclusion_of(:strength).in_range 1..5 }
   end
 
-  it "is invalid without a name" do
-    exercise.name = nil
-    expect(exercise).to be_invalid
+  context "has valid associations" do
+    it { expect(exercise).to have_many :views}
+    it { expect(exercise).to have_many(:users).through :views}
+    it { expect(exercise).to have_many(:prerequisites).through :prerequisiteships}
   end
-
-  it "is invalid if any of the exertion, technicality, flexibility, balance and strength scores are not between 1 and 5" do
-    exercise.exertion = 8
-    expect(exercise).to be_invalid
-  end
-
-  pending "add instance method tests if there are any instance methods"
 
 end
