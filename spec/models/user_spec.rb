@@ -1,20 +1,23 @@
 require 'rails_helper'
 
 describe User, :focus do
-  let(:user) {FactoryGirl.build(:user)}
+  let(:user) { build(:user) }
 
-  it "is valid" do
-    expect(user).to be_valid
+  context "is valid" do
+    it { expect(user).to validate_presence_of(:first_name) }
+    it { expect(user).to validate_presence_of(:last_name) }
+    it { expect(user).to validate_presence_of(:email) }
+
+    it "is invalid if a user is under 18" do
+      user.birthdate = "2013-11-24"
+      expect(user).to be_invalid
+    end
   end
 
-  it "is invalid if first name, last name, email, password or birthdate are not present" do
-    user.first_name = nil
-    expect(user).to be_invalid
-  end
+  context "has valid associations" do
+    it { should have_many(:views) }
+    it { should have_many(:exercises).through(:views) }
 
-  it "is invalid if a user is under 18" do
-    user.birthdate = "2013-11-24"
-    expect(user).to be_invalid
   end
 
   context "#adjust_minutes" do
