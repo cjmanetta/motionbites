@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Exercise, :focus do
+describe Exercise do
   let(:exercise) {FactoryGirl.build(:exercise)}
 
   context "is valid" do
