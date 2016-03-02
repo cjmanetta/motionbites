@@ -194,3 +194,17 @@ CSV.foreach("db/exercises.csv", {headers: true, header_converters: :symbol}) do 
     muscle_stretched: row[:muscle_stretched],
     origin: row[:origin]})
 end
+
+
+Exercise.all.each do |exercise|
+  if exercise.legacy_prereqs
+    if exercise.legacy_prereqs.length > 1
+      prereqs = exercise.legacy_prereqs.split(',')
+      prereqs.each do |prereq|
+        exercise.prerequisites << Exercise.where(legacy_id: prereq.lstrip)
+      end
+    else
+      exercise.prerequisites << Exercise.where(legacy_id: exercise.legacy_prereqs)
+    end
+  end
+end
