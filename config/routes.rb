@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'home/index'
-
   root 'home#index'
+
+  resource :session, only: [:new, :create]
+  resources :users, only: [:show]
 
 end
