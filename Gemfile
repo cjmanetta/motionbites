@@ -21,7 +21,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'faker'
   gem 'factory_girl_rails'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '~> 2.52.0'
 end
 
 group :development do
