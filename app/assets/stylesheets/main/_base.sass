@@ -1,0 +1,27 @@
+
+body
+  background: $cream
+
+.form-container
+  +outer-container(30%)
+  $height: 100%
+  +calc(margin-top, "(100vh - 277.98px)/2")
+  p
+    text-align: center
+.intake
+  margin-top: auto
+h1
+  font-size: golden-ratio(14px,  1)
+  text-align: center
+  color: $yellow
+
+input
+  &[type="checkbox"]
+    display: inline-block
+    background: blue
+  &[type="submit"]
+    float: right
+
+label:last-of-type
+  display: inline-block
+  padding-right: 10px

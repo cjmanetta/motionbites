@@ -11,6 +11,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'therubyracer'
 gem 'autoprefixer-rails', '~> 5.2.1.2'
 
+gem 'bourbon'
+
 
 group :development, :test do
   gem 'rspec-rails'
