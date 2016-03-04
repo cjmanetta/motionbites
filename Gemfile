@@ -11,6 +11,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'therubyracer'
 gem 'autoprefixer-rails', '~> 5.2.1.2'
 
+gem 'bourbon'
+
 
 group :development, :test do
   gem 'rspec-rails'
@@ -21,7 +23,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'faker'
   gem 'factory_girl_rails'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '~> 2.52.0'
 end
 
 group :development do

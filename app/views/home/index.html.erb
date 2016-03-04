@@ -1,25 +1,5 @@
-<%= form_tag '/login', class: 'ui large form' do -%>
-<div class="ui middle aligned center aligned grid">
-  <div class="login-col column">
-    <h2 class="ui image header">
-      <div class="content">motion moments</div>
-    </h2>
-    <div class="ui stacked segment">
-      <div class="field">
-        <div class="ui left icon input">
-          <i class="user icon"></i>
-          <%= text_field_tag :email, nil, required: true, placeholder: 'email' %>
-      </div>
-      </div>
-      <div class="field">
-        <div class="ui left icon input">
-          <i class="lock icon"></i>
-          <%= password_field :password, nil, required: true, placeholder: 'password' %>
-        </div>
-
-      </div>
-      <%= submit_tag 'login', class: 'ui fluid large submit button' %>
-    </div>
-  </div>
-</div>
-<% end %>
+<article class="form-container">
+  <h1>MOTION MOMENTS</h1>
+  <p>login | <%= link_to 'sign-up', new_user_path  %></p>
+  <%= render partial: 'sessions/new' %>
+</article>

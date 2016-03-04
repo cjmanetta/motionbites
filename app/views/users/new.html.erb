@@ -1,0 +1,49 @@
+<article class="form-container intake">
+  <%= form_for :user, url: users_path do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field  :first_name, placeholder: 'first_name' %>
+
+  <%= f.label :last_name %>
+  <%= f.text_field  :last_name, placeholder: 'last_name' %>
+
+  <%= f.label :email %>
+  <%= f.text_field  :email, placeholder: 'email' %>
+
+  <%= f.label :birthdate %>
+  <%= f.date_field :birthdate, placeholder: 'birthdate', min: 18.years.ago %>
+
+  <%= f.label :password_digest %>
+  <%= f.password_field  :password_digest, placeholder: 'password' %>
+
+  <%= f.label :days_of_7_vig %>
+  <%= f.number_field  :days_of_7_vig, min: 1, max: 7 %>
+
+  <%= f.label :mins_vig_per_day %>
+  <%= f.number_field  :mins_vig_per_day %>
+
+  <%= f.label :days_of_7_mod %>
+  <%= f.number_field  :days_of_7_mod, min: 1, max: 7 %>
+
+  <%= f.label :mins_mod_per_day %>
+  <%= f.number_field  :mins_mod_per_day %>
+
+  <%= f.label :days_of_7_walk %>
+  <%= f.number_field  :days_of_7_walk, min: 1, max: 7 %>
+
+  <%= f.label :mins_walk_per_day %>
+  <%= f.number_field  :mins_walk_per_day %>
+
+  <%= f.label :mins_weekday_sitting %>
+  <%= f.number_field  :mins_weekday_sitting %>
+
+  <%= f.label :org_pa %>
+  <%= f.check_box  :org_pa %>
+
+  <%= f.submit 'sign up' %>
+
+  <% end %>
+
+  <% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+</article>

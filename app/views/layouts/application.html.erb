@@ -2,12 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+
     <title>Motionmo</title>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= stylesheet_link_tag "application", media: "all" %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= render partial: 'layouts/nav' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
   </body>

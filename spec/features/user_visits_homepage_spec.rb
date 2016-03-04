@@ -4,6 +4,6 @@ feature "user visits homepage" do
   scenario "successfully", :js => true do
     visit root_path
 
-    expect(page).to have_css '.content', text: 'motion moments'
+    expect(page).to have_css 'h1', text: 'MOTION MOMENTS'
   end
 end
