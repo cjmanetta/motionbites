@@ -7,3 +7,7 @@
 
     <%= f.submit 'login', class: 'submit' %>
   <% end %>
+
+  <% if flash[:notice] %>
+    <p><%= flash[:notice] %></p>
+  <% end %>
