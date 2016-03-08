@@ -7,6 +7,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'bcrypt', '~> 3.1.7'
+gem 'uglifier'
 
 gem 'therubyracer'
 gem 'autoprefixer-rails', '~> 5.2.1.2'
