@@ -1,11 +1,12 @@
 FactoryGirl.define do
+
   factory :user do
-    first_name "Mic"
-    last_name  "Jagger"
+    first_name "Han"
+    last_name  "Solo"
     email { "#{first_name.first.downcase}#{last_name.downcase}@example.com" }
-    birthdate "1969-11-03"
+    birthdate "01-04-1922"
     admin false
-    password_digest "password"
+    password "password"
     days_of_7_vig 3
     mins_vig_per_day 20
     days_of_7_mod 2
@@ -16,4 +17,7 @@ FactoryGirl.define do
     org_pa true
     viewership_level 1
   end
+
 end
+
+
