@@ -11,7 +11,7 @@ module ExerciseConstructor
         description = "\"" + row[:description].to_s + "\""
         exertion = "\"" + row[:exertion].to_s + "\""
         technicality = "\"" + row[:technicality].to_s + "\""
-        equipment = nil
+        equipment = "nil"
         flexibility = "\"" + row[:flexibility].to_s + "\""
         balance = "\"" + row[:balance].to_s + "\""
         strength = "\"" + row[:strength].to_s + "\""
@@ -23,22 +23,22 @@ module ExerciseConstructor
         origin = "\"" + row[:origin].to_s + "\""
 
         f << "{"
-        f << "name: #{name},\n"
-        f << "legacy_id: #{legacy_id},\n"
-        f << "legacy_prereqs: #{legacy_prereqs},\n"
-        f << "description: #{description},\n"
-        f << "exertion: #{exertion},\n"
-        f << "technicality: #{technicality},\n"
-        f << "equipment: #{equipment},\n"
-        f << "flexibility: #{flexibility},\n"
-        f << "balance: #{balance},\n"
-        f << "strength: #{strength},\n"
-        f << "breathing: #{breathing},\n"
-        f << "muscle_1: #{muscle_1},\n"
-        f << "muscle_2: #{muscle_2},\n"
-        f << "muscle_3: #{muscle_3},\n"
-        f << "muscle_stretched: #{muscle_stretched},\n"
-        f << "origin: #{origin},\n"
+        f << "name: #{name},"
+        f << "legacy_id: #{legacy_id},"
+        f << "legacy_prereqs: #{legacy_prereqs},"
+        f << "description: #{description},"
+        f << "exertion: #{exertion},"
+        f << "technicality: #{technicality},"
+        f << "equipment: #{equipment},"
+        f << "flexibility: #{flexibility},"
+        f << "balance: #{balance},"
+        f << "strength: #{strength},"
+        f << "breathing: #{breathing},"
+        f << "muscle_1: #{muscle_1},"
+        f << "muscle_2: #{muscle_2},"
+        f << "muscle_3: #{muscle_3},"
+        f << "muscle_stretched: #{muscle_stretched},"
+        f << "origin: #{origin}"
         f << "},\n"
       end
       f << "]\n"
@@ -63,7 +63,7 @@ module ExerciseConstructor
 
  def create_exercises
     open("db/seeds.rb", 'a') do |f|
-      f << "exercise_array.each { |exercise| Exercise.create(exercise) }"
+      f << "exercise_array.each { |exercise| Exercise.create(exercise) }\n"
     end
  end
 end
