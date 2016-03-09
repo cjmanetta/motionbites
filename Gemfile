@@ -12,7 +12,7 @@ gem 'therubyracer'
 gem 'autoprefixer-rails', '~> 5.2.1.2'
 
 gem 'bourbon'
-
+gem 'chromedriver-helper', '~> 0.0.1'
 
 group :development, :test do
   gem 'rspec-rails'

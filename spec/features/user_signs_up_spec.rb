@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature "user can sign up", :focus do
-  let(:user) {create(:user)}
+feature "user can sign up" do
+  given(:user) {build :user}
 
   scenario "successfully", :js => true do
     visit root_path
@@ -20,7 +20,6 @@ feature "user can sign up", :focus do
     fill_in "user_mins_walk_per_day", with: user.mins_walk_per_day
     fill_in "user_mins_weekday_sitting", with: user.mins_weekday_sitting
     check "user_org_pa"
-
     click_on "sign up"
 
     expect(page).to have_css '.stat', text: "Days of vigorous exercise per week: #{user.days_of_7_vig}"

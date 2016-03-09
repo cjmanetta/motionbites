@@ -1,19 +1,22 @@
 class UsersController < ApplicationController
+  # before_filter :authorize
+
   def new
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to user_path(@user.id)
+      login(@user)
+      redirect_to user_path(current_user)
     else
       flash[:notice] = "there was something wrong with your submission"
+      redirect_to new_user_path
     end
 
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   private
