@@ -1,8 +1,12 @@
+first_names = ["Lelia", "Brant", "Savanah", "Skyla", "Vito", "Nils", "Maye", "Jean", "Victor", "Leonardo", "Kirstin", "Eryn", "Liliana", "Vivienne", "Nakia", "Garrett", "Eunice", "Laurel"]
+
+last_names = ["Mohr", "Waelchi", "Zboncak", "Keebler", "Gerlach", "Connelly", "Quigley", "Eichmann", "Strosin", "Little", "Gusikowski", "Labadie", "Hand", "Klocko", "Harris", "Metz", "Hayes", "O'Reilly"]
+
 18.times do
   User.create(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: Faker::Internet.email,
+    first_name: first_names.pop,
+    last_name: last_names.pop,
+    email: "#{first_name.first.downcase}#{last_name.downcase}@example.com",
     password: "1234",
     birthdate: "1984-11-24",
     basic_start: false)
