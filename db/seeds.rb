@@ -3,9 +3,11 @@ first_names = ["Lelia", "Brant", "Savanah", "Skyla", "Vito", "Nils", "Maye", "Je
 last_names = ["Mohr", "Waelchi", "Zboncak", "Keebler", "Gerlach", "Connelly", "Quigley", "Eichmann", "Strosin", "Little", "Gusikowski", "Labadie", "Hand", "Klocko", "Harris", "Metz", "Hayes", "O'Reilly"]
 
 18.times do
+  first_name = first_names.pop
+  last_name = last_names.pop
   User.create(
-    first_name: first_names.pop,
-    last_name: last_names.pop,
+    first_name: first_name,
+    last_name: last_name,
     email: "#{first_name.first.downcase}#{last_name.downcase}@example.com",
     password: "1234",
     birthdate: "1984-11-24",
