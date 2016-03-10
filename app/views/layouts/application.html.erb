@@ -9,6 +9,11 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+  <% if current_user %>
+  <%= link_to 'logout', '/session', method: :delete %>
+  <% else %>
+    <%= link_to 'sign-in', new_session_path, class: 'nav-login' %>
+  <% end %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
   </body>
