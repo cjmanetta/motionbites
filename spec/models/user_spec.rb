@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe User do
-  let(:user) { build(:user) }
+  let(:user) { create(:user) }
 
   context "is valid" do
     it { expect(user).to validate_presence_of(:first_name) }
@@ -9,6 +9,7 @@ describe User do
     it { expect(user).to validate_presence_of(:email) }
 
     it "is invalid if a user is under 18" do
+      p user
       user.birthdate = "2013-11-24"
       expect(user).to be_invalid
     end
@@ -30,6 +31,14 @@ describe User do
     it "calculates the user's fitness score and assign it the fitness_score attribute" do
       user.calculate_fitness_score
       expect(user.fitness_score).to eq(3)
+    end
+  end
+
+  context "#last_three" do
+    let(:user_with_views) {create(:user_with_views)}
+    it "finds the last three views in viewer history" do
+      expect(user_with_views.last_three_views).to contain_exactly(user_with_views.views[-1], user_with_views.views[-2], user_with_views.views[-3])
+      
     end
   end
 

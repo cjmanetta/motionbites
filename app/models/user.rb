@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
   has_many :views
   has_many :exercises, through: :views
 
+  def last_three_views
+    self.views.last(3)
+  end
+
   def calculate_age
     birthday  = Date.parse(self.birthdate)
     (Date.today - birthday).to_i / 365
@@ -69,4 +73,6 @@ class User < ActiveRecord::Base
       self.update_attribute(:fitness_score, fitness_score)
     end
   end
+
+  
 end

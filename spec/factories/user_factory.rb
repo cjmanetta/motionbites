@@ -16,7 +16,16 @@ FactoryGirl.define do
     mins_weekday_sitting 550
     org_pa true
     viewership_level 1
+
+    factory :user_with_views do
+        after(:create) do |user, views|
+            create_list(:view, 4, user: user)
+        end
+    end
   end
+
+  
+
 
 end
 
