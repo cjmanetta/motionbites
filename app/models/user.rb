@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
   has_many :views
   has_many :exercises, through: :views
 
-  def last_three_views
-    self.views.last(3)
+  def recent_views(number)
+    self.views.last(number)
   end
 
   def calculate_age
