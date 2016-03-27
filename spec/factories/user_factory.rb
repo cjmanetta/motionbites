@@ -19,7 +19,7 @@ FactoryGirl.define do
 
     factory :user_with_views do
         after(:create) do |user, views|
-            create_list(:view, 10, user: user)
+            create_list(:view, 5, user: user)
         end
     end
   end
