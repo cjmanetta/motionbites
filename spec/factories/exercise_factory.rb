@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :exercise do
-    name "Neck Roll"
+    sequence(:name) {|n| "Exercise #{n}" }
     exertion  1
     balance 1
     flexibility 3
