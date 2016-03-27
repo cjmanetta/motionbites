@@ -3,7 +3,7 @@ require 'rails_helper'
 describe RecentViewsFilterHelper, type: :helper do
 	let(:user) { create(:user_with_views)}
 	
- context "#filter_recent_views", :focus do
+ context "#filter_recent_views" do
  	it "filters the recently viewed exercises out of the exercises eligable to be played" do
  		create_list(:exercise, 10)
  		unfiltered_exercises = Exercise.all

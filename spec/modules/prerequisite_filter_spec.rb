@@ -1,22 +1,28 @@
 require 'rails_helper'
+# require 'prerequisite_filter'
 
 describe PrerequisiteFilter do
-  let(:exercise) { create_list(:exercise, 10) }
-  let(:user) { create(:user_with_views) }
+  let(:main_exercise) { create(:exercise)  }
+  let(:prerequisites) { create_list(:exercise, 2)  }
+  let(:user) { create(:user) }
+  before(:each) do
+    main_exercise.prerequisites << prerequisites
+  end
 
-  context "#prereq_met?" do
-
-    
-
+  context "#prereqs_met?" do
     it "returns false when the user history does not contain all of the prerequisites for an exercises" do
-    	# exercise.prerequisites << push prereqs onto exercise maybe this needs to happen in a before bloc
-      expect(prereq_met?(user, exercise)).to be_falsey
+    	
+      expect(PrerequisiteFilter.prereq_met?(user, main_exercise)).to be_falsey
     end
 
-    it "returns true when the user history contains all of the prerequisites for an exercises" do
-    	# user.views << push exercise prereqs from before onto user view history
+    it "returns true when the user history contains all of the prerequisites for an exercises", :focus do
+    	view1 = create(:view, exercise_id: main_exercise.prerequisites.first.id, user_id: user.id)
+  		view2 = create(:view, exercise_id: main_exercise.prerequisites.second.id, user_id: user.id)
 
-      expect(prereq_met?(user, exercise)).to be_truthy
+  	p	View.where(exercise_id: main_exercise.prerequisites.first.id)
+
+  
+      expect(PrerequisiteFilter.prereqs_met?(user, main_exercise)).to be_truthy
     end
   end
 
