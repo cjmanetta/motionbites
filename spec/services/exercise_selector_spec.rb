@@ -1,17 +1,24 @@
 require 'rails_helper'
 
 describe ExerciseSelector do
-	let(:user) { create(:user_with_views)}
-	let(:selector) { ExerciseSelector.new(user) }
+	let(:user) { create(:user)}
 
 	
 	context "#filter_recent_views" do
-		it "filters the recently viewed exercises out of the exercises eligable to be played" do
-			create_list(:exercise, 10)
-			unfiltered_exercises = Exercise.all
-			filtered_exercises = selector.filter_recent_views
+		let(:selector) { ExerciseSelector.new(user) }
 
-			expect(filtered_exercises.length).to eq(unfiltered_exercises.length - 3)
+		it "filters the recently viewed exercises out of the exercises eligable to be played", :focus do
+
+			exercises = create_list(:exercise, 10)
+			
+			3.times do |index|
+				create(:view, exercise_id: exercises[index].id, user_id: user.id)
+			end
+
+			unfiltered_exercises_length = exercises.length
+			selector.filter_recent_views
+
+			expect(selector.exercises.length).to eq(unfiltered_exercises_length - 3)
 		end
 	end
 
@@ -66,6 +73,7 @@ describe ExerciseSelector do
 	end
 
   context "#calculate_score" do
+  	let(:selector) { ExerciseSelector.new(user) }
   	let(:exercise) { build(:exercise) }
   	let(:exercise2) { build(:exercise, balance: 4) }
     it "calculates the exercise score based on user and exercise data" do
@@ -106,7 +114,7 @@ describe ExerciseSelector do
   	end
   end
 
-  context "#select", :focus do 
+  context "#select" do 
   	let(:selector) { ExerciseSelector.new(user) }
 
   	it "returns a random exercise to be played and then deletes it from the queue" do
