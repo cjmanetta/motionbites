@@ -39,10 +39,9 @@ class ExerciseSelector
 	end
 
 	def prereqs_met?(exercise)
-		exercise.prerequisites.each do |prereq|
-			return false if !@user.views.include?(View.find_by(exercise_id: prereq.id))
-		end 
-		true	
+		exercise.prerequisites.all? do |prereq|
+			@user.views.include?(View.find_by(exercise_id: prereq.id))
+		end 	
 	end
 
 	def calculate_score(exercise)
