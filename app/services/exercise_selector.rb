@@ -1,7 +1,7 @@
 class ExerciseSelector
 	def initialize(user)
 		@user = user
-		@exercises = [filter_recent_views]
+		@exercises = filter_recent_views
 	end
 
 	def select	
@@ -10,7 +10,7 @@ class ExerciseSelector
 		queue.delete(pick)	
 	end
 
-	def return_top_5(hash)
+	def select_top_5(hash)
 		slice = hash.values.sort! {|a, b| b <=> a }.slice(0...5)
 		hash.keep_if do |key, value|
 			slice.include?(value)
@@ -28,8 +28,6 @@ class ExerciseSelector
 		scores_hash
 	end
 
-	private
-
 	def filter_recent_views
 		rejections = []
 		@user.recent_views(3).each {|view| rejections << view.exercise_id}
@@ -37,13 +35,14 @@ class ExerciseSelector
 	end
 
 	def filter_ineligible_exercises
-		@exercises.delete_if! {|exercise| !prereqs_met?(exercise)} 
+		@exercises.delete_if {|exercise| !prereqs_met?(exercise)} 
 	end
 
 	def prereqs_met?(exercise)
 		exercise.prerequisites.each do |prereq|
-			break if !@user.views.include?(View.find_by(exercise_id: prereq.id))
-		end 	
+			return false if !@user.views.include?(View.find_by(exercise_id: prereq.id))
+		end 
+		true	
 	end
 
 	def calculate_score(exercise)
