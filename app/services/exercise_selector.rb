@@ -1,13 +1,19 @@
 class ExerciseSelector
+	attr_reader :exercises
+	
 	def initialize(user)
 		@user = user
-		@exercises = filter_recent_views
+		@exercises = nil
+		@adjustment_table = ADJUSTMENT_TABLE
+		@queue = nil
 	end
 
-	def select	
-		queue ||= return_top_5(collect)
-		pick = queue.sample
-		queue.delete(pick)	
+	def select
+		@queue ||= select_top_5(collect)
+		pick = @queue.sample
+		@queue.delete(pick)	
+
+		Exercise.find(pick)
 	end
 
 	def select_top_5(hash)
@@ -21,17 +27,21 @@ class ExerciseSelector
 
 	def collect
 		filter_ineligible_exercises
-		scores_hash = {}
-		@exercises.each do |exercise|
-			scores_hash[exercise.id] = calculate_score(exercise)
+		uniqueness_incrementer = 0.001
+
+		@exercises.each_with_object({}) do |exercise, scores_hash|
+			score = calculate_score(exercise)
+			score += uniqueness_incrementer
+			uniqueness_incrementer += 0.001
+
+			scores_hash[exercise.id] = score
 		end
-		scores_hash
 	end
 
 	def filter_recent_views
 		rejections = []
 		@user.recent_views(3).each {|view| rejections << view.exercise_id}
-		Exercise.all - Exercise.all.where(id: rejections)   
+		@exercises = Exercise.all - Exercise.all.where(id: rejections)   
 	end
 
 	def filter_ineligible_exercises
@@ -46,13 +56,10 @@ class ExerciseSelector
 
 	def calculate_score(exercise)
 		score = 100
-		uniqueness_incrementer = 0.001
-		ADJUSTMENT_TABLE.each_key do |exercise_attribute|
-			adjustment = ADJUSTMENT_TABLE.fetch(exercise_attribute)[@user.fitness_score - 1][exercise.send(exercise_attribute) - 1]
+		@adjustment_table.each_key do |exercise_attribute|
+			adjustment = @adjustment_table.fetch(exercise_attribute)[@user.fitness_score - 1][exercise.send(exercise_attribute) - 1]
 			score += adjustment
 		end
-		score += uniqueness_incrementer
-		uniqueness_incrementer += 0.001
 		score
 	end
 
