@@ -7,4 +7,5 @@ FactoryGirl.define do
     strength 1
     technicality 1
   end
+  
 end

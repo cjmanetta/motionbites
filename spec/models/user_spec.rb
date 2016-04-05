@@ -34,7 +34,7 @@ describe User do
     end
   end
 
-  context "#recent_views", :focus do
+  context "#recent_views" do
     let(:user_with_views) {create(:user_with_views)}
     it "finds the specified number of recent views in viewer history" do
       expect(user_with_views.recent_views(3)).to contain_exactly(user_with_views.views[-1], user_with_views.views[-2], user_with_views.views[-3])
