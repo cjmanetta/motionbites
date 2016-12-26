@@ -1,5 +1,25 @@
-<article class="form-container">
-  <h1>MotionBites</h1>
-  <p>login | <%= link_to 'sign-up', new_user_path  %></p>
-  <%= render partial: 'sessions/new' %>
+<article>
+  <header>
+    <h1>MotionBites</h1>
+    <p class='subtitle'>You’re physical. Sit less. Move more. Learn how.</p>
+  </header>
+  <ul class="blurbs">
+    <li>
+      <h3>Sit all day, your body pays</h3>
+      <p>Sitting for long periods does nasty things to your metabolism – things that standing desks and regular exercise cannot denastify… things that can nasti-morph into heart disease and type 2 diabetes.</p>
+    </li>
+    <li>
+      <h3>Don’t panic! It’s an easy fix</h3>
+      <p>Breaking up those long sits every 20-30 minutes with just light activity can prevent that nastification. MotionBites’ 2-minute videos interrupt your super-fun work with easy, targeted exercises</p>
+    </li>
+    <li>
+      <h3>You are your body, duh</h3>
+      <p>Hello! I’m your body. Remember me? MotionBites works on balance, flexibility, poise, and that sunny attitude of yours. Your body (you) will learn new movements, new skills, and possibly new dance moves.</p>
+    </li>
+  </ul>
+
+  <section class='form-container'>
+    <p>login | <%= link_to 'sign-up', new_user_path  %></p>
+    <%= render partial: 'sessions/new' %>
+  </section>
 </article>
