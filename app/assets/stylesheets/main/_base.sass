@@ -1,8 +1,22 @@
-
 body
   background: $cream
+h1
+  font-size: golden-ratio(14px,  1)
+  text-align: center
+  color: $yellow
 
+.subtitle
+  text-align: center
+
+.blurbs
+  +outer-container(80%)
+  margin-top: 100px
+  li
+    +span-columns(4)
+
+// old styles for login form currently not displayed on homepage
 .form-container
+  display: none
   +outer-container(30%)
   $height: 100%
   +calc(margin-top, "(100vh - 277.98px)/2")
@@ -10,10 +24,7 @@ body
     text-align: center
 .intake
   margin-top: auto
-h1
-  font-size: golden-ratio(14px,  1)
-  text-align: center
-  color: $yellow
+
 
 input
   &[type="checkbox"]
